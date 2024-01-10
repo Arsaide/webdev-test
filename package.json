@@ -9,10 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/icons-material": "^5.15.3",
+    "@mui/material": "^5.15.3",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.11",
+    "alias": "^0.0.5",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@types/node": "^20",
