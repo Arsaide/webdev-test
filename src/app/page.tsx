@@ -1,10 +1,15 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import SearchPanel from "@/components/pages/main-page/search-panel/SearchPanel";
+import GoodsList from "@/components/pages/main-page/goods/Goods";
+import Basket from "@/components/pages/main-page/basket/Basket";
 
 export default function Home() {
   return (
     <>
-      213
+      <div className='container'>
+        <SearchPanel/>
+        <GoodsList/>
+        <Basket/>
+      </div>
     </>
   )
 }
