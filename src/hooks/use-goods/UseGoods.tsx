@@ -20,4 +20,4 @@ const useGoods = () => {
     return products
 }
 
-export default useGoods()
+export default useGoods
