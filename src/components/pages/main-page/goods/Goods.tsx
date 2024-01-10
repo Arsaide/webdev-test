@@ -1,24 +1,10 @@
 'use client'
 import React, {useEffect, useState} from 'react';
-import {fetchData} from '@/components/pages/api/dataService';
 import {GoodsCard} from "@/components/pages/main-page/goods/subcomponents/goods-card/GoodsCard";
+import useData from "@/hooks/use-data/UseData";
 
 const Goods = () => {
-    const [products, setProducts] = useState<any[]>([]);
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const data = await fetchData();
-                setProducts(data.products);
-                console.log(data)
-            } catch (error) {
-                console.error('Error fetch data:', error);
-            }
-        };
-
-        fetchProducts();
-    }, []);
+    const { products } = useData()
 
     return (
         <>

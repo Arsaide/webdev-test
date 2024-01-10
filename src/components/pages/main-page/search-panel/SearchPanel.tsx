@@ -1,11 +1,11 @@
 'use client'
 import React, {useState} from 'react';
-import useSearch from "@/hooks/use-search/UseSearch";
 import {GoodsCard} from "@/components/pages/main-page/goods/subcomponents/goods-card/GoodsCard";
+import useData from "@/hooks/use-data/UseData";
 
 function SearchPanel() {
-    const { products, categories } = useSearch()
-    const [selectedCategory, setSelectedCategory] = useState<string>('')
+    const { products, categories } = useData();
+    const [selectedCategory, setSelectedCategory] = useState<string>('');
 
     const handleCategoryChange = (category: string) => {
         setSelectedCategory(category)
