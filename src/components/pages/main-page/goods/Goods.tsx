@@ -11,6 +11,7 @@ const Goods = () => {
             try {
                 const data = await fetchData();
                 setProducts(data.products);
+                console.log(data)
             } catch (error) {
                 console.error('Error fetch data:', error);
             }
