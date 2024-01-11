@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchData } from '@/components/pages/api/dataService';
+import { fetchData } from '@/app/api/dataService';
 
 const useData = () => {
     const [allProducts, setAllProducts] = useState<any[]>([]);
