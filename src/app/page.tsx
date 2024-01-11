@@ -1,11 +1,11 @@
-import FilterPanel from "@/components/pages/main-page/goods/filter-panel/FilterPanel";
+import Goods from "@/components/pages/main-page/goods/Goods";
 import Basket from "@/components/pages/main-page/basket/Basket";
 
 export default function Home() {
   return (
     <>
       <div className='container'>
-        <FilterPanel/>
+        <Goods/>
         <Basket/>
       </div>
     </>
