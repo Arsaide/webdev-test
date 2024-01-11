@@ -1,4 +1,5 @@
 import React from 'react';
+import {TextField} from "@mui/material";
 
 type Props = {
     value: string;
@@ -7,12 +8,15 @@ type Props = {
 
 const SearchInput = ({ value, handleSearchChange }: Props) => (
     <div>
-        <label>Search</label>
-        <input
-            type="text"
+        <TextField
+            sx={{
+                mb: '1.5rem'
+            }}
+            label={'Search'}
+            type={'search'}
             value={value}
+            variant="filled"
             onChange={(e) => handleSearchChange(e.target.value)}
-            placeholder={'Searching panel'}
         />
     </div>
 );
