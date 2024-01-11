@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from "next/link";
-import styles from './GoodsCard.module.scss'
 import Image from "next/image";
 
 
@@ -20,9 +19,9 @@ export const GoodsCard = ({ id, title, description, price, discountPercentage, r
 
     return (
         <>
-            <article className={styles.card} key={id}>
+            <article key={id}>
                 <Link href={`/${id}`}>
-                    <div className={styles.cardImg}>
+                    <div>
                         <Image
                             src={images[2]}
                             width={400}
