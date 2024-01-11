@@ -1,4 +1,6 @@
 import React from 'react';
+import { FormControl, MenuItem, Select, InputLabel } from "@mui/material";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 type Props = {
     categories: string[];
@@ -6,18 +8,29 @@ type Props = {
     handleCategoryChange: (category: string) => void;
 };
 
-const FilterSelect = ({categories, selectedCategory, handleCategoryChange}:Props ) => (
-    <div>
-        <label>Filtered by category</label>
-        <select onChange={(e) => handleCategoryChange(e.target.value)} value={selectedCategory}>
-            <option value={''}>All Categories</option>
-            {categories.map((category, id) => (
-                <option key={id} value={category}>
-                    {category}
-                </option>
-            ))}
-        </select>
-    </div>
-);
+const FilterSelect = ({ categories, selectedCategory, handleCategoryChange }: Props) => {
+    const handleChange = (event: SelectChangeEvent) => {
+        handleCategoryChange(event.target.value as string);
+    };
+
+    return (
+        <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Filtered by category</InputLabel>
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Filtered by category"
+                value={selectedCategory}
+                onChange={handleChange}>
+                <MenuItem value={''}>All Categories</MenuItem>
+                {categories.map((category, id) => (
+                    <MenuItem key={id} value={category}>
+                        {category}
+                    </MenuItem>
+                ))}
+            </Select>
+        </FormControl>
+    );
+};
 
 export default FilterSelect;
