@@ -5,6 +5,7 @@ import useFilterLogic from "@/hooks/use-filter-logic/UseFilterLogic";
 import FilterSelect from "@/components/pages/main-page/goods/props/filter-select/FilterSelect";
 import SearchInput from "@/components/pages/main-page/goods/props/search-input/SearchInput";
 import GoodsList from "@/components/pages/main-page/goods/props/product-list/GoodsList";
+import {Grid} from "@mui/material";
 
 const Goods = () => {
     const {
@@ -12,9 +13,10 @@ const Goods = () => {
         selectedCategory,
         setSelectedCategory,
         searchQuery,
-        handleSearchChange } = useData();
+        handleSearchChange
+    } = useData();
 
-    const { handleCategoryChange, filteredProducts } = useFilterLogic(
+    const {handleCategoryChange, filteredProducts} = useFilterLogic(
         searchQuery,
         selectedCategory,
         setSelectedCategory
@@ -30,10 +32,10 @@ const Goods = () => {
             />
 
             {/* Поиск */}
-            <SearchInput value={searchQuery} handleSearchChange={handleSearchChange} />
+            <SearchInput value={searchQuery} handleSearchChange={handleSearchChange}/>
 
             {/* Рендер */}
-            <GoodsList products={filteredProducts} />
+            <GoodsList products={filteredProducts}/>
         </>
     );
 };
