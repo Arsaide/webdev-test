@@ -1,5 +1,4 @@
-import FilterPanel from "@/components/pages/main-page/filter-panel/FilterPanel";
-import GoodsList from "@/components/pages/main-page/goods/Goods";
+import FilterPanel from "@/components/pages/main-page/goods/filter-panel/FilterPanel";
 import Basket from "@/components/pages/main-page/basket/Basket";
 
 export default function Home() {
@@ -7,7 +6,6 @@ export default function Home() {
     <>
       <div className='container'>
         <FilterPanel/>
-        <GoodsList/>
         <Basket/>
       </div>
     </>
