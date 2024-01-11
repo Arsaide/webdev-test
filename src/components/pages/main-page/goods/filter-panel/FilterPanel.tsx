@@ -1,6 +1,6 @@
 'use client'
 import React, {useState} from 'react';
-import {GoodsCard} from "@/components/pages/main-page/goods/subcomponents/goods-card/GoodsCard";
+import {GoodsCard} from "@/components/pages/main-page/goods/GoodsCard";
 import useData from "@/hooks/use-data/UseData";
 
 function FilterPanel() {
