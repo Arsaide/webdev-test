@@ -78,31 +78,4 @@ body {
 
 .main {
   flex: 1 1 auto;
-  margin-top: 64px
-}
-
-[class*="container"] {
-  max-width: 1504px;
-  margin: 0 auto;
-  padding: 0 30px;
-  flex-direction: column;
-}
-
-
-@media (max-width: 767.98px) {
-  [class*="container"] {
-    padding: 0 15px;
-  }
-}
-
-@media (max-width: 599.98px) {
-  .main {
-    margin-top: 48px;
-  }
-}
-
-@media(max-width: 339.98px) {
-  .main {
-    margin-top: 56px;
-  }
 }
