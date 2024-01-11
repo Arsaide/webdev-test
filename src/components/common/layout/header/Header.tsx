@@ -6,10 +6,16 @@ function Header() {
     return (
         <AppBar>
                 <Toolbar>
-                    <Typography>
+                    <Typography
+                        variant={'h5'}
+                        component={'span'}
+                        sx={{ flexGrow: 1 }}
+                    >
                         Arsaide shop
                     </Typography>
-                    <IconButton>
+                    <IconButton
+                        color={'inherit'}
+                    >
                         <ShoppingBasket/>
                     </IconButton>
                 </Toolbar>
