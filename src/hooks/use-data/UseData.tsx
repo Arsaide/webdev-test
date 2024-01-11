@@ -3,16 +3,22 @@ import { fetchData } from '@/app/api/dataService';
 import { Product } from '@/app/api/dataService'
 
 const useData = () => {
+    // Стейт для хранения продуктов
     const [allProducts, setAllProducts] = useState<Product[]>([]);
+    // Стейт для хранения выбраной категории в селект
     const [selectedCategory, setSelectedCategory] = useState<string>('');
+    // Стейт для хранения категорий продуктов полученых с АПИ
     const [categories, setCategories] = useState<string[]>([]);
+    // Стейт для хранения строки поискового запроса
     const [searchQuery, setSearchQuery] = useState<string>('');
 
-    //Поиск продуктов
+    // Функ.обработчик строки поиска
     const handleSearchChange = (query: string) => {
         setSearchQuery(query);
     };
-    const getSearchResults = () => {
+
+    // Получение результатов поиска и фильтрация для мапа
+    const getSearchResults = (searchQuery: string) => {
         const query = searchQuery.toLowerCase().trim()
         if(query === '') {
             return allProducts
@@ -26,12 +32,13 @@ const useData = () => {
         )
     }
 
-    // получение данніх
+    // Загрузка данніх и их проверки для рендера
     useEffect(() => {
         const fetchDataApi = async () => {
             try {
                 const data = await fetchData()
 
+                // проверка на массив полученній от апи
                 if(Array.isArray(data.products)) {
                     setAllProducts(data.products);
                     const uniqueCategories = Array.from(new Set(data.products.map(product => product.category)))
@@ -47,8 +54,8 @@ const useData = () => {
         fetchDataApi()
     }, []);
 
-    //Фильтрация продуктов
-    const getFilteredProducts = () => {
+    // Функция фильтрация продуктов по категории
+    const getFilteredProducts = (selectedCategory: string) => {
         if(selectedCategory) {
             return allProducts.filter(product => product.category === selectedCategory)
         }
@@ -57,16 +64,16 @@ const useData = () => {
 
 
     return {
-        // Фильтрацция + рендер
+        // Все продукты
         allProducts,
 
-        // Фильтрация
+        // Категории и фильтрация
         categories,
         selectedCategory,
         setSelectedCategory,
         getFilteredProducts,
 
-        //Посик
+        // Посик
         searchQuery,
         handleSearchChange,
         getSearchResults,
