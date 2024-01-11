@@ -4,7 +4,14 @@ import {GoodsCard} from "@/components/pages/main-page/goods/GoodsCard";
 import useData from "@/hooks/use-data/UseData";
 
 function FilterPanel() {
-    const { categories, selectedCategory, setSelectedCategory, getFilteredProducts } = useData()
+    const {
+        categories,
+        selectedCategory,
+        setSelectedCategory,
+        getFilteredProducts,
+        searchQuery,
+        handleSearchChange,
+        getSearchResults, } = useData()
 
     const handleCategoryChange = (category: string) => {
         setSelectedCategory(category)
@@ -12,6 +19,7 @@ function FilterPanel() {
 
     return (
         <>
+            {/*Filter*/}
             <div>
                 <label>Filtered by category</label>
                 <select
@@ -26,20 +34,48 @@ function FilterPanel() {
                 </select>
             </div>
 
-            {getFilteredProducts().map(item => (
-                <GoodsCard
-                    key={item.id}
-                    id={item.id}
-                    title={item.title}
-                    description={item.description}
-                    price={item.price}
-                    discountPercentage={item.discountPercentage}
-                    rating={item.rating}
-                    brand={item.brand}
-                    category={item.category}
-                    images={item.images}
-                />
-            ))}
+            {/*Search*/}
+            <div>
+                <label>Search</label>
+                <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => handleSearchChange(e.target.value)}
+                    placeholder={'Searchin panel'}/>
+            </div>
+
+            {/*Render*/}
+            {searchQuery
+                ? getSearchResults().map(item => (
+                    <GoodsCard
+                        key={item.id}
+                        id={item.id}
+                        title={item.title}
+                        description={item.description}
+                        price={item.price}
+                        discountPercentage={item.discountPercentage}
+                        rating={item.rating}
+                        brand={item.brand}
+                        category={item.category}
+                        images={item.images}
+                    />
+                ))
+                : getFilteredProducts().map(item => (
+                    <GoodsCard
+                        key={item.id}
+                        id={item.id}
+                        title={item.title}
+                        description={item.description}
+                        price={item.price}
+                        discountPercentage={item.discountPercentage}
+                        rating={item.rating}
+                        brand={item.brand}
+                        category={item.category}
+                        images={item.images}
+                    />
+                ))
+
+            }
         </>
     );
 }
