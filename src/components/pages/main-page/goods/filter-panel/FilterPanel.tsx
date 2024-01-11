@@ -17,6 +17,9 @@ function FilterPanel() {
         setSelectedCategory(category)
     }
 
+    const filteredProducts =
+        searchQuery !== '' ? getSearchResults() : getFilteredProducts();
+
     return (
         <>
             {/*Filter*/}
@@ -45,8 +48,8 @@ function FilterPanel() {
             </div>
 
             {/*Render*/}
-            {searchQuery
-                ? getSearchResults().map(item => (
+            {filteredProducts.length > 0 ? (
+                filteredProducts.map(item => (
                     <GoodsCard
                         key={item.id}
                         id={item.id}
@@ -60,22 +63,9 @@ function FilterPanel() {
                         images={item.images}
                     />
                 ))
-                : getFilteredProducts().map(item => (
-                    <GoodsCard
-                        key={item.id}
-                        id={item.id}
-                        title={item.title}
-                        description={item.description}
-                        price={item.price}
-                        discountPercentage={item.discountPercentage}
-                        rating={item.rating}
-                        brand={item.brand}
-                        category={item.category}
-                        images={item.images}
-                    />
-                ))
-
-            }
+            ): (
+                <p>No Result</p>
+            )}
         </>
     );
 }
