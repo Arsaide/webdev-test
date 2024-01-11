@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {GoodsCard} from "@/components/pages/main-page/goods/subcomponents/goods-card/GoodsCard";
 import useData from "@/hooks/use-data/UseData";
 
-function SearchPanel() {
+function FilterPanel() {
     const { products, categories } = useData();
     const [selectedCategory, setSelectedCategory] = useState<string>('');
 
@@ -49,4 +49,4 @@ function SearchPanel() {
     );
 }
 
-export default SearchPanel;
+export default FilterPanel;
