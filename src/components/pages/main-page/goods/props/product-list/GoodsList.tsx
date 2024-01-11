@@ -12,9 +12,8 @@ const GoodsList = ({ products }: Props) => (
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 3, sm: 6, md: 12 }}>
             {products.length > 0 ? (
                 products.map((item) => (
-                    <Grid item xs={2} sm={3} md={4}>
+                    <Grid item xs={2} sm={3} md={4} key={item.id}>
                         <GoodsCard
-                            key={item.id}
                             id={item.id}
                             title={item.title}
                             description={item.description}
