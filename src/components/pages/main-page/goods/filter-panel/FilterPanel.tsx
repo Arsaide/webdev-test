@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {GoodsCard} from "@/components/pages/main-page/goods/GoodsCard";
 import useData from "@/hooks/use-data/UseData";
 
@@ -19,6 +19,12 @@ function FilterPanel() {
 
     const filteredProducts =
         searchQuery !== '' ? getSearchResults() : getFilteredProducts();
+
+    useEffect(() => {
+        if (searchQuery !== '') {
+            setSelectedCategory('');
+        }
+    }, [searchQuery, setSelectedCategory]);
 
     return (
         <>
