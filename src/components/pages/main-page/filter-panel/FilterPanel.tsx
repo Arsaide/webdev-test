@@ -4,16 +4,11 @@ import {GoodsCard} from "@/components/pages/main-page/goods/subcomponents/goods-
 import useData from "@/hooks/use-data/UseData";
 
 function FilterPanel() {
-    const { products, categories } = useData();
-    const [selectedCategory, setSelectedCategory] = useState<string>('');
+    const { categories, selectedCategory, setSelectedCategory, getFilteredProducts } = useData()
 
     const handleCategoryChange = (category: string) => {
         setSelectedCategory(category)
     }
-
-    const filteredProducts = selectedCategory
-        ? products.filter(product => product.category === selectedCategory)
-        : products
 
     return (
         <>
@@ -31,7 +26,7 @@ function FilterPanel() {
                 </select>
             </div>
 
-            {filteredProducts.map(item => (
+            {getFilteredProducts().map(item => (
                 <GoodsCard
                     key={item.id}
                     id={item.id}
