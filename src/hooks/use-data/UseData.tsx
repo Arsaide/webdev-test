@@ -1,12 +1,32 @@
 import { useState, useEffect } from 'react';
 import { fetchData } from '@/app/api/dataService';
+import { Product } from '@/app/api/dataService'
 
 const useData = () => {
-    const [allProducts, setAllProducts] = useState<any[]>([]);
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
     const [categories, setCategories] = useState<string[]>([]);
+    const [searchQuery, setSearchQuery] = useState<string>('');
 
+    //Поиск продуктов
+    const handleSearchChange = (query: string) => {
+        setSearchQuery(query);
+    };
+    const getSearchResults = () => {
+        const query = searchQuery.toLowerCase().trim()
+        if(query === '') {
+            return allProducts
+        }
 
+        return allProducts.filter(product =>
+            product.title.toLowerCase().includes(query) ||
+            product.description.toLowerCase().includes(query) ||
+            product.brand.toLowerCase().includes(query) ||
+            product.category.toLowerCase().includes(query)
+        )
+    }
+
+    // получение данніх
     useEffect(() => {
         const fetchDataApi = async () => {
             try {
@@ -27,6 +47,7 @@ const useData = () => {
         fetchDataApi()
     }, []);
 
+    //Фильтрация продуктов
     const getFilteredProducts = () => {
         if(selectedCategory) {
             return allProducts.filter(product => product.category === selectedCategory)
@@ -34,7 +55,22 @@ const useData = () => {
         return allProducts
     }
 
-    return { allProducts, categories, selectedCategory, setSelectedCategory, getFilteredProducts };
+
+    return {
+        // Фильтрацция + рендер
+        allProducts,
+
+        // Фильтрация
+        categories,
+        selectedCategory,
+        setSelectedCategory,
+        getFilteredProducts,
+
+        //Посик
+        searchQuery,
+        handleSearchChange,
+        getSearchResults,
+    };
 }
 
 export default useData
