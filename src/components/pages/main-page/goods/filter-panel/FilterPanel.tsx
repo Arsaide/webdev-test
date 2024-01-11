@@ -1,7 +1,8 @@
 'use client'
 import React, {useEffect, useState} from 'react';
-import {GoodsCard} from "@/components/pages/main-page/goods/GoodsCard";
+import {GoodsCard} from "@/components/pages/main-page/goods/props/card/GoodsCard";
 import useData from "@/hooks/use-data/UseData";
+import useFilterLogic from "@/hooks/use-filter-logic/UseFilterLogic";
 
 function FilterPanel() {
     const {
@@ -13,18 +14,7 @@ function FilterPanel() {
         handleSearchChange,
         getSearchResults, } = useData()
 
-    const handleCategoryChange = (category: string) => {
-        setSelectedCategory(category)
-    }
-
-    const filteredProducts =
-        searchQuery !== '' ? getSearchResults() : getFilteredProducts();
-
-    useEffect(() => {
-        if (searchQuery !== '') {
-            setSelectedCategory('');
-        }
-    }, [searchQuery, setSelectedCategory]);
+    const { handleCategoryChange, filteredProducts } = useFilterLogic(searchQuery, setSelectedCategory)
 
     return (
         <>
