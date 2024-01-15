@@ -67,6 +67,10 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-image: url(https://img.freepik.com/free-vector/futuristic-dark-wavy-wallpaper_23-2148400223.jpg?w=1380&t=st=1705353793~exp=1705354393~hmac=3a78e9f8f47e9209cb75f8898219cb016ec502a0df4298589ce23d86accd572a);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
