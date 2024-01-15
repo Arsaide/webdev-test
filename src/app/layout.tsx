@@ -3,7 +3,7 @@ import {Roboto} from 'next/font/google'
 import './globals.css'
 import Header from "@/components/common/layout/header/Header";
 import {Container} from "@mui/system";
-import img from '../../public/background.jpg'
+import Footer from "@/components/common/layout/footer/Footer";
 
 
 const roboto = Roboto({
@@ -28,8 +28,8 @@ export default function RootLayout({children,}: {
                     <main className='main'>
                         {children}
                     </main>
-                    {/*footer*/}
                 </Container>
+                <Footer/>
             </div>
         </body>
         </html>
