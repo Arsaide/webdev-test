@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl, MenuItem, Select, InputLabel } from "@mui/material";
+import {FormControl, MenuItem, Select, InputLabel, OutlinedInput} from "@mui/material";
 import { SelectChangeEvent } from "@mui/material/Select";
 
 type Props = {
@@ -14,7 +14,7 @@ const FilterSelect = ({ categories, selectedCategory, handleCategoryChange }: Pr
     };
 
     return (
-        <FormControl fullWidth>
+        <FormControl sx={{ m: 1, width: 300 }}>
             <InputLabel id="demo-simple-select-label">Filtered by category</InputLabel>
             <Select
                 labelId="demo-simple-select-label"
@@ -22,7 +22,7 @@ const FilterSelect = ({ categories, selectedCategory, handleCategoryChange }: Pr
                 label="Filtered by category"
                 value={selectedCategory}
                 onChange={handleChange}>
-                <MenuItem value={''}>All Categories</MenuItem>
+                <MenuItem value={''}><em>All Categories</em></MenuItem>
                 {categories.map((category, id) => (
                     <MenuItem key={id} value={category}>
                         {category}

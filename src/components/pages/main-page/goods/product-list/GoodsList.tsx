@@ -9,8 +9,7 @@ type Props = {
 };
 
 const GoodsList = ({ products }: Props) => {
-    const { currentPage, handlePageChange, getCurrentProducts, setProductsPerPage, productsPerPage } = usePagination();
-
+    const { currentPage, handlePageChange, getCurrentProducts, productsPerPage } = usePagination();
     const currentProducts = getCurrentProducts(products);
 
     return (
@@ -41,6 +40,7 @@ const GoodsList = ({ products }: Props) => {
                     count={Math.ceil(products.length / productsPerPage)}
                     page={currentPage}
                     onChange={handlePageChange}
+                    color="primary"
                 />
             </Stack>
         </>
