@@ -6,6 +6,7 @@ import FilterSelect from "@/components/pages/main-page/goods/filter-select/Filte
 import SearchInput from "@/components/pages/main-page/goods/search-input/SearchInput";
 import GoodsList from "@/components/pages/main-page/goods/goods-list/GoodsList";
 import { Paper } from '@mui/material';
+import styles from './Goods.module.scss'
 
 const Goods = () => {
     const {
@@ -25,7 +26,7 @@ const Goods = () => {
     return (
         <>
             <Paper sx={{padding: 3, marginBottom: 2}}>
-                <div style={{display: "flex", gap: "50px"}}>
+                <div className={styles.cnt}>
                     {/* Фильтрация */}
                     <FilterSelect
                         categories={categories}
@@ -34,7 +35,9 @@ const Goods = () => {
                     />
 
                     {/* Поиск */}
-                    <SearchInput value={searchQuery} handleSearchChange={handleSearchChange}/>
+                    <SearchInput
+                        value={searchQuery}
+                        handleSearchChange={handleSearchChange}/>
                 </div>
 
                 {/* Рендер */}

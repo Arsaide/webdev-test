@@ -1,0 +1,10 @@
+.cnt {
+  display: flex;
+  gap: 50px;
+}
+
+@media(max-width: 487.98px) {
+  .cnt {
+    flex-direction: column;
+  }
+}
