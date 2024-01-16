@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {CardActionsStyle, GoodsCardStyle, ImgCardStyle} from './GoodsCard.styles';
 
 
 type Props = {
@@ -24,10 +25,10 @@ export const GoodsCard = ({id, title, description, price, discountPercentage, ra
 
     return (
         <>
-            <Card sx={{maxWidth: 345}} key={id}>
+            <Card sx={GoodsCardStyle} key={id}>
                 <CardMedia
                     image={images[0]}
-                    sx={{height: 200}}
+                    sx={ImgCardStyle}
                     title={description}
                 />
                 <CardContent>
@@ -50,11 +51,11 @@ export const GoodsCard = ({id, title, description, price, discountPercentage, ra
                         Category: {category}
                     </Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={CardActionsStyle}>
                     <Link href={`/${id}`}>
                         <Button size="medium"
                                 variant="contained">
-                            Buy
+                            Show more
                         </Button>
                     </Link>
                 </CardActions>
