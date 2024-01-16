@@ -23,7 +23,7 @@ const Basket = (props: { cartOpen: boolean, closeCart: any, order: string; remov
                     <ListItemText primary={"Cart"}/>
                 </ListItem>
             </List>
-
+        {/*Не получилось реализовать, мало времени и были ошибки*/}
         </Drawer>
     );
 }
