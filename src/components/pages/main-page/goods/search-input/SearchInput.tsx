@@ -1,5 +1,6 @@
 import React from 'react';
 import {TextField} from "@mui/material";
+import {SearchStyles} from "./SearchInput.styles";
 
 type Props = {
     value: string;
@@ -9,9 +10,7 @@ type Props = {
 const SearchInput = ({ value, handleSearchChange }: Props) => (
     <div>
         <TextField
-            sx={{
-                mb: '1.5rem'
-            }}
+            sx={SearchStyles}
             label={'Search'}
             type={'search'}
             value={value}
