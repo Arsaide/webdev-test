@@ -1,6 +1,6 @@
 export const FormControlStyles = {
     marginBottom: 1,
-    width: 300
+    width: 240
 }
 
 export const InputLabelStyles = {
