@@ -4,6 +4,7 @@ import { Product } from "@/app/api/dataService";
 import { Grid, Pagination, Stack } from '@mui/material';
 import usePagination from "@/hooks/use-pagination/UsePagination";
 import {GoodsListPaginationBottom, GoodsListPaginationTop} from './GoodsList.styles';
+import Loading from '@/components/common/ui/loading/Loading';
 
 type Props = {
     products: Product[];
@@ -45,7 +46,7 @@ const GoodsList = ({ products }: Props) => {
                             </Grid>
                         ))
                     ) : (
-                        <p>No Result</p>
+                        <Loading/>
                     )}
                 </Grid>
                 <Stack spacing={2} sx={GoodsListPaginationBottom}>
