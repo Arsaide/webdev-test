@@ -28,7 +28,7 @@ const GoodsList = ({ products }: Props) => {
                         color="primary"
                     />
                 </Stack>
-                <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 3, sm: 6, md: 12}} sx={{justifyContent: "center"}}>
+                <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 3, sm: 6, md: 12}}>
                     {currentProducts.length > 0 ? (
                         currentProducts.map((item) => (
                             <Grid item xs={4} sm={3} md={4} key={item.id}>
