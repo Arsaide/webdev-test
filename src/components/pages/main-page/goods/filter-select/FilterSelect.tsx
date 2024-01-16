@@ -1,6 +1,7 @@
 import React from 'react';
 import {FormControl, MenuItem, Select, InputLabel, OutlinedInput} from "@mui/material";
 import { SelectChangeEvent } from "@mui/material/Select";
+import {FormControlStyles, InputLabelStyles} from "./FilterSelect.styles";
 
 type Props = {
     categories: string[];
@@ -14,8 +15,13 @@ const FilterSelect = ({ categories, selectedCategory, handleCategoryChange }: Pr
     };
 
     return (
-        <FormControl sx={{ m: 1, width: 300 }}>
-            <InputLabel id="demo-simple-select-label">Filtered by category</InputLabel>
+        <FormControl
+            variant="filled"
+            sx={FormControlStyles}>
+            <InputLabel
+                id="demo-simple-select-label"
+                sx={InputLabelStyles}>Filtered by category
+            </InputLabel>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
