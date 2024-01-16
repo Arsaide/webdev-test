@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {CardActionsStyle, GoodsCardStyle, ImgCardStyle} from './GoodsCard.styles';
+import { Rating } from '@mui/material';
 
 
 type Props = {
@@ -39,17 +40,20 @@ export const GoodsCard = ({id, title, description, price, discountPercentage, ra
                         Brand: {brand}
                     </Typography>
                     <Typography variant="body1" color="text.secondary">
-                        Price: {price}
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary">
-                        Discount: {discountPercentage}%
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary">
-                        Rating: {rating}
+                        Price: <span style={{color: "#f51b31", fontWeight: 600}}>{Math.round(price * (discountPercentage / 100) * 10) / 10}$
+                        </span> | <span style={{opacity: 0.9}}><s>{price} $</s></span>
                     </Typography>
                     <Typography variant="body1" color="text.secondary">
                         Category: {category}
                     </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{fontSize: "19px", mt: 1}}>
+                        Rating:
+                    </Typography>
+                    <Rating
+                        name="read-only"
+                        value={rating}
+                        precision={0.2}
+                        readOnly />
                 </CardContent>
                 <CardActions sx={CardActionsStyle}>
                     <Link href={`/${id}`}>
