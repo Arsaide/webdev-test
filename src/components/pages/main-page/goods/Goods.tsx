@@ -4,7 +4,8 @@ import useData from "@/hooks/use-data/UseData";
 import useFilterLogic from "@/hooks/use-filter-logic/UseFilterLogic";
 import FilterSelect from "@/components/pages/main-page/goods/filter-select/FilterSelect";
 import SearchInput from "@/components/pages/main-page/goods/search-input/SearchInput";
-import GoodsList from "@/components/pages/main-page/goods/product-list/GoodsList";
+import GoodsList from "@/components/pages/main-page/goods/goods-list/GoodsList";
+import { Paper } from '@mui/material';
 
 const Goods = () => {
     const {
@@ -23,18 +24,22 @@ const Goods = () => {
 
     return (
         <>
-            {/* Фильтрация */}
-            <FilterSelect
-                categories={categories}
-                selectedCategory={selectedCategory}
-                handleCategoryChange={handleCategoryChange}
-            />
+            <Paper sx={{padding: 3, marginBottom: 2}}>
+                <div style={{display: "flex", gap: "50px"}}>
+                    {/* Фильтрация */}
+                    <FilterSelect
+                        categories={categories}
+                        selectedCategory={selectedCategory}
+                        handleCategoryChange={handleCategoryChange}
+                    />
 
-            {/* Поиск */}
-            <SearchInput value={searchQuery} handleSearchChange={handleSearchChange}/>
+                    {/* Поиск */}
+                    <SearchInput value={searchQuery} handleSearchChange={handleSearchChange}/>
+                </div>
 
-            {/* Рендер */}
-            <GoodsList products={filteredProducts}/>
+                {/* Рендер */}
+                <GoodsList products={filteredProducts}/>
+            </Paper>
         </>
     );
 };
