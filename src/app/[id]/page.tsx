@@ -1,6 +1,11 @@
 'use client'
 import {fetchData, Product} from "../api/dataService";
 import React, { useEffect, useState } from 'react';
+import Loading from "@/components/common/ui/loading/Loading";
+import {CardMedia, Paper} from "@mui/material";
+import {Container} from "@mui/system";
+import Typography from "@mui/material/Typography";
+import Image from "next/image";
 
 type Props = {
     params: {
@@ -28,15 +33,21 @@ const ProductDetails: React.FC<Props> = ({ params: { id } }) => {
     }, [id]);
 
     if (!item) {
-        return <div>Loading...</div>;
+        return <Loading/>;
     }
 
     return (
-        <div>
-            <h1>Детали продукта {item.id}</h1>
-            <p>Title: {item.title}</p>
-            <p>Description: {item.description}</p>
-        </div>
+        <Paper>
+            <Container>
+                <Typography variant={'h4'}>Title: {item.title}</Typography>
+                <p>Description: {item.description}</p>
+                {item.images.map((image, index) => (
+                    // <Image key={index} src={image} width={300} height={300} alt={`Image ${index + 1}`} />
+                    <CardMedia key={index} image={image} title={item.description} sx={{ maxWidth: 345, height: 250 ,}}/>
+                ))}
+            </Container>
+            <CardMedia/>
+        </Paper>
     );
 };
 
