@@ -3,6 +3,7 @@ import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
 import {ShoppingBasket} from "@mui/icons-material";
 import {Container} from "@mui/system";
 import {appBarSX, typographySX} from "@/components/common/layout/header/Header.styles";
+import Link from "next/link";
 
 function Header() {
 
@@ -12,9 +13,8 @@ function Header() {
                 <Toolbar>
                     <Typography
                         variant={'h5'}
-                        component={'span'}
                         sx={typographySX}>
-                        Arsaide shop
+                        <Link style={{color: "#fff"}} href={'/'}>Arsaide shop</Link>
                     </Typography>
                     <IconButton
                         color={'inherit'}>
