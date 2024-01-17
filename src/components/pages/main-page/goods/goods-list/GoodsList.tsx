@@ -14,7 +14,6 @@ const GoodsList = ({ products }: Props) => {
     const { currentPage, handlePageChange, getCurrentProducts, productsPerPage } = usePagination();
     const currentProducts = getCurrentProducts(products);
 
-    // @ts-ignore
     return (
         <>
             <div style={{display: "flex",
