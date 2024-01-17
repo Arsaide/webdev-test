@@ -1,12 +1,15 @@
 'use client'
 import {fetchData, Product} from "../api/dataService";
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {CardMedia, Paper, Rating, Skeleton} from "@mui/material";
 import {Container} from "@mui/system";
 import Typography from "@mui/material/Typography";
 import styles from './page.module.scss'
 import Image from "next/image";
 import Link from "next/link";
+import CardActions from "@mui/material/CardActions";
+import {CardActionsStyle} from "@/components/pages/main-page/goods/props/goods-card/GoodsCard.styles";
+import Button from "@mui/material/Button";
 
 type Props = {
     params: {
@@ -14,7 +17,7 @@ type Props = {
     }
 };
 
-const ProductDetails: React.FC<Props> = ({ params: { id } }) => {
+const ProductDetails: React.FC<Props> = ({params: {id}}) => {
     const [item, setItem] = useState<Product | null>(null);
 
     useEffect(() => {
@@ -50,7 +53,12 @@ const ProductDetails: React.FC<Props> = ({ params: { id } }) => {
                     New Price: <span className={styles.red}>
                             {Math.round(item.price * (item.discountPercentage / 100) * 10) / 10}$
                            </span>! <br/>
-                    OldPrice: <span style={{opacity: 0.9}}><s>{item.price} $</s></span></Typography>
+                    OldPrice: <span style={{opacity: 0.9}}><s>{item.price} $</s></span>
+                </Typography>
+                <Button size="medium"
+                        variant="contained">
+                    Buy!
+                </Button>
                 <Typography variant="subtitle1" sx={{fontSize: "19px", mt: 1}}>
                     Rating:
                 </Typography>
@@ -68,7 +76,7 @@ const ProductDetails: React.FC<Props> = ({ params: { id } }) => {
                             key={index} src={image}
                             alt={item.description}
                             width={300}
-                            height={200}
+                            height={250}
                             loading={'lazy'}/>
                     ))}
                 </div>

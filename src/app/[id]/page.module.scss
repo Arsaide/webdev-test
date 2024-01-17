@@ -5,8 +5,7 @@
 }
 
 .img {
-  max-width: 345px;
-  height: 250px;
+
 }
 
 .red {
@@ -26,11 +25,19 @@
   font-weight: 600;
   width: max-content;
   padding: 10px;
+  margin-bottom: 10px;
   background-color: rgba(255, 247, 0, .9);
 }
 
 @media (max-width: 767.98px) {
   .imgCnt {
     justify-content: center;
+  }
+}
+
+@media(max-width: 467.98px) {
+  .img {
+    width: 200px;
+    height: 150px;
   }
 }
