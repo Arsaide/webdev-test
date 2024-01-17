@@ -33,13 +33,11 @@ const Goods = () => {
                         selectedCategory={selectedCategory}
                         handleCategoryChange={handleCategoryChange}
                     />
-
                     {/* Поиск */}
                     <SearchInput
                         value={searchQuery}
                         handleSearchChange={handleSearchChange}/>
                 </div>
-
                 {/* Рендер */}
                 <GoodsList products={filteredProducts}/>
             </Paper>
