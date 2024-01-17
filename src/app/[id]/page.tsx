@@ -1,19 +1,18 @@
 'use client'
 import {fetchData, Product} from "../api/dataService";
 import React, { useEffect, useState } from 'react';
-import Loading from "@/components/common/ui/loading/Loading";
-import {CardMedia, Paper} from "@mui/material";
+import {CardMedia, Paper, Rating, Skeleton} from "@mui/material";
 import {Container} from "@mui/system";
 import Typography from "@mui/material/Typography";
+import styles from './page.module.scss'
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
     params: {
         id: number
     }
 };
-
-// ... (ваш импорт)
 
 const ProductDetails: React.FC<Props> = ({ params: { id } }) => {
     const [item, setItem] = useState<Product | null>(null);
@@ -33,20 +32,47 @@ const ProductDetails: React.FC<Props> = ({ params: { id } }) => {
     }, [id]);
 
     if (!item) {
-        return <Loading/>;
+        // return <Loading/>;
+        return (
+            <Paper sx={{padding: 3, marginBottom: 2}}>
+                <Skeleton variant={'rectangular'} width={210} height={118}/>
+            </Paper>
+        )
     }
 
     return (
-        <Paper>
+        <Paper sx={{padding: 3, marginBottom: 2}}>
             <Container>
-                <Typography variant={'h4'}>Title: {item.title}</Typography>
-                <p>Description: {item.description}</p>
-                {item.images.map((image, index) => (
-                    // <Image key={index} src={image} width={300} height={300} alt={`Image ${index + 1}`} />
-                    <CardMedia key={index} image={image} title={item.description} sx={{ maxWidth: 345, height: 250 ,}}/>
-                ))}
+                <Link className={styles.link} href={'/'}>Come back →</Link>
+                <Typography variant={'h4'} sx={{mt: 2}}>{item.title}</Typography>
+                <Typography variant={"subtitle1"}>{item.description}</Typography>
+                <Typography variant={"subtitle1"} className={styles.price}>
+                    New Price: <span className={styles.red}>
+                            {Math.round(item.price * (item.discountPercentage / 100) * 10) / 10}$
+                           </span>! <br/>
+                    OldPrice: <span style={{opacity: 0.9}}><s>{item.price} $</s></span></Typography>
+                <Typography variant="subtitle1" sx={{fontSize: "19px", mt: 1}}>
+                    Rating:
+                </Typography>
+                <Rating
+                    name="read-only"
+                    value={item.rating}
+                    precision={0.2}
+                    readOnly
+                    sx={{mb: 3}}/>
+                <Typography variant={"h5"} sx={{mb: 1}}>Images:</Typography>
+                <div className={styles.imgCnt}>
+                    {item.images.map((image, index) => (
+                        <Image
+                            className={styles.img}
+                            key={index} src={image}
+                            alt={item.description}
+                            width={300}
+                            height={200}
+                            loading={'lazy'}/>
+                    ))}
+                </div>
             </Container>
-            <CardMedia/>
         </Paper>
     );
 };
